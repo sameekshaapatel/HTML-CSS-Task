@@ -1,0 +1,113 @@
+import { useState } from "react";
+
+// Task 1: TextUpdater Component
+function TextUpdater() {
+  const [text, setText] = useState("");
+
+  return (
+    <div className="text-center p-4">
+      <input
+        type="text"
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        className="border p-2 rounded"
+        placeholder="Type something..."
+      />
+      <p className="mt-2">You typed: {text}</p>
+    </div>
+  );
+}
+
+// Task 2: Form Component
+function InputForm() {
+  const [input, setInput] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Submitted Value:", input);
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="text-center p-4">
+      <input
+        type="text"
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        className="border p-2 rounded mr-2"
+      />
+      <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
+        Submit
+      </button>
+    </form>
+  );
+}
+
+// Task 3: UserCard Component
+function UserCard({ name, email }) {
+  return (
+    <div className="border p-4 rounded shadow-lg text-center w-64 mx-auto mt-4">
+      <h2 className="text-lg font-bold">{name}</h2>
+      <p className="text-gray-600">{email}</p>
+    </div>
+  );
+}
+
+// Task 4: Button Component
+function CustomButton() {
+  return (
+    <button
+      onClick={() => console.log("Button clicked!")}
+      className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700"
+    >
+      Click Me
+    </button>
+  );
+}
+
+// Task 5: LoginForm Component
+function LoginForm() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(`Email: ${email}\nPassword: ${password}`);
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="text-center p-4">
+      <input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        className="border p-2 rounded mr-2"
+        placeholder="Email"
+      />
+      <input
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        className="border p-2 rounded mr-2"
+        placeholder="Password"
+      />
+      <button type="submit" className="bg-green-500 text-white px-4 py-2 rounded">
+        Login
+      </button>
+    </form>
+  );
+}
+
+// Main App Component
+function App() {
+  return (
+    <div className="p-6">
+      <TextUpdater />
+      <InputForm />
+      <UserCard name="John Doe" email="john@example.com" />
+      <CustomButton />
+      <LoginForm />
+    </div>
+  );
+}
+
+export default App;
